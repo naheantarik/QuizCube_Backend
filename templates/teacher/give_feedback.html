@@ -1,0 +1,43 @@
+{% extends 'teacher/teacherbase.html' %}
+{% block content %}
+{%load static%}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+</head>
+<br><br>
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title">{{ object.exam.course_name }} Exam's Feedback</h6>
+    </div>
+    <form method="POST">
+      {% csrf_token %}
+      <p><strong>Student:</strong> {{object.student.get_name}}</p>
+      <div class="form-group">
+        <label for="id_feedback">Feedback</label>
+        <input class="form-control" type="text" name="feedback" id="id_feedback">
+      </div> 
+      <input type="submit" value="Submit" class="btn btn-success">
+    </form>
+  </div>
+</div>
+
+<br><br><br><br><br><br>
+{% endblock content %}
